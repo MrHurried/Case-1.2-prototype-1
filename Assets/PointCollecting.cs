@@ -23,6 +23,10 @@ public class PointCollecting : MonoBehaviour
     {
         collectedPoints += pointamount;
         pointTextScript.Refresh(collectedPoints, pointsInCurrentRoom);
-        if(collectedPoints >= pointsInCurrentRoom) nextSceneLoader.Go();
+        if (collectedPoints >= pointsInCurrentRoom)
+        {
+            nextSceneLoader.Go();
+        }
     }
+
 }

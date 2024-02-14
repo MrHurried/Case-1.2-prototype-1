@@ -1966,6 +1966,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 188972766716678200, guid: 6fe4cd798a6f1074bbeea2645e628755, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1154902011494286247, guid: 6fe4cd798a6f1074bbeea2645e628755, type: 3}
       propertyPath: m_Pivot.x
       value: 0
