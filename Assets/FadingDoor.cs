@@ -38,7 +38,7 @@ public class FadingDoor : MonoBehaviour
 
         if(state == State.passable)
         {
-            transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, Random.Range(-15f, 15f)));
+            transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, Random.Range(defaultRotation.z -15f, defaultRotation.z + 15f)));
 
             if (timer >= timeInPassableState )
             {
