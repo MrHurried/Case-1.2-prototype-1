@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpike_Bounce : MonoBehaviour
 {
+    [SerializeField] float movementSpeed = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
