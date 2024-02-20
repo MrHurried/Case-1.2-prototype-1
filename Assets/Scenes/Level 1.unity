@@ -581,7 +581,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450012466}
   m_CullTransparentMesh: 1
---- !u!1 &670812624
+--- !u!1 &602676068
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -589,25 +589,65 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 670812629}
-  - component: {fileID: 670812628}
-  - component: {fileID: 670812627}
-  - component: {fileID: 670812626}
-  - component: {fileID: 670812625}
+  - component: {fileID: 602676073}
+  - component: {fileID: 602676072}
+  - component: {fileID: 602676071}
+  - component: {fileID: 602676070}
+  - component: {fileID: 602676069}
   m_Layer: 0
-  m_Name: EnemyCuber (1)
-  m_TagString: Enemy
+  m_Name: Cube
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &670812625
+--- !u!114 &602676069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602676068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab76649fcd5c26b469537ed4cd75febe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  shouldMoveTowardsB: 1
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  timer: 0
+  speed: 50
+--- !u!65 &602676070
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670812624}
+  m_GameObject: {fileID: 602676068}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -620,74 +660,15 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02, y: 0.019999996, z: 0.019999996}
+  m_Size: {x: 0.02, y: 0.02, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &670812626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670812624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab76649fcd5c26b469537ed4cd75febe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMoving: 0
-  posB: {x: 0, y: 0, z: 0}
-  posA: {x: 0, y: 0, z: 0}
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.016670227
-      value: 0.01889038
-      inSlope: 0.22337918
-      outSlope: 0.22337918
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0.24548006
-      value: 0.12102011
-      inSlope: 1.2348522
-      outSlope: 1.2348522
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.24200985
-      outWeight: 0.33055538
-    - serializedVersion: 3
-      time: 0.4983995
-      value: 0.975118
-      inSlope: -0.39637363
-      outSlope: -0.39637363
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.58775496
-    - serializedVersion: 3
-      time: 0.9791565
-      value: 0.018495452
-      inSlope: -1.9898255
-      outSlope: -1.9898255
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  timer: 0
-  durationToAndBack: 3
---- !u!23 &670812627
+--- !u!23 &602676071
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670812624}
+  m_GameObject: {fileID: 602676068}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -724,24 +705,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &670812628
+--- !u!33 &602676072
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670812624}
+  m_GameObject: {fileID: 602676068}
   m_Mesh: {fileID: -5495902117074765545, guid: 6ec739271974e4c46a91407d6df42521, type: 3}
---- !u!4 &670812629
+--- !u!4 &602676073
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670812624}
+  m_GameObject: {fileID: 602676068}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.78, y: -2.06, z: 0}
+  m_LocalPosition: {x: -4.82, y: -1.08, z: 0}
   m_LocalScale: {x: 70, y: 70, z: 70}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2684,7 +2665,7 @@ Transform:
   m_GameObject: {fileID: 4106326686612086402}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 1.036, z: -0}
+  m_LocalPosition: {x: 0, y: -3.69, z: 0}
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3024,6 +3005,6 @@ SceneRoots:
   - {fileID: 1873341095}
   - {fileID: 1496368202}
   - {fileID: 3413835260969272217}
-  - {fileID: 670812629}
   - {fileID: 1444801256}
   - {fileID: 3726529619470844984}
+  - {fileID: 602676073}
