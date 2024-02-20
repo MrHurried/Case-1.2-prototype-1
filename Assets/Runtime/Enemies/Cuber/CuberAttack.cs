@@ -24,28 +24,40 @@ public class CuberAttack : MonoBehaviour
     private Vector3 rayLeftOrigin;
     private Vector3 rayRightOrigin;
 
+    //private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
+        //rb = GetComponent<Rigidbody>();
+
         posA = transform.position;
 
         AssignBPositions();
 
-        rayUpOrigin = transform.position + new Vector3(0f,0f, transform.localScale.x / 99f);
-        rayDownOrigin = transform.position - new Vector3(0f, 0f, transform.localScale.x / 99f);
+        rayUpOrigin = transform.position + new Vector3(0f, transform.localScale.x / 99f, 0f);
+        rayDownOrigin = transform.position - new Vector3(0f, transform.localScale.x / 99f, 0f);
         rayRightOrigin = transform.position + new Vector3(transform.localScale.x/ 99f, 0f, 0f);
         rayLeftOrigin = transform.position - new Vector3(transform.localScale.x / 99f, 0f, 0f);
     }
 
     private void AssignBPositions()
     {
-        Physics.Raycast(transform.position, transform.up * 999f, out RaycastHit hitInfoUp);
-        Physics.Raycast(transform.position, transform.up * -999f, out RaycastHit hitInfoDown);
-        Physics.Raycast(transform.position, transform.right * 999f, out RaycastHit hitInfoRight);
-        Physics.Raycast(transform.position, transform.right * -999f, out RaycastHit hitInfoLeft);
+        Ray ray = new Ray(rayUpOrigin, Vector3.up);
+        Physics.Raycast(ray, out RaycastHit hitInfoUp, 9999f);
+        Debug.DrawRay(ray.origin, ray.direction * 9999f);
 
-        Vector3 upBPos = hitInfoUp.point - new Vector3(0f, 0f, transform.localScale.z / 101f);
-        Vector3 downBPos = hitInfoDown.point + new Vector3(0f, 0f, transform.localScale.z / 101f);
+        ray = new Ray(rayDownOrigin, Vector3.up * -1);
+        Physics.Raycast(ray, out RaycastHit hitInfoDown, 9999f);
+
+        ray = new Ray(rayLeftOrigin, Vector3.right * -1);
+        Physics.Raycast(ray, out RaycastHit hitInfoLeft);
+
+        ray = new Ray(rayRightOrigin, Vector3.right);
+        Physics.Raycast(ray, out RaycastHit hitInfoRight, 99f);
+
+        Vector3 upBPos = hitInfoUp.point - new Vector3(0f, transform.localScale.y / 101f, 0f);
+        Vector3 downBPos = hitInfoDown.point + new Vector3(0f, transform.localScale.y / 101f, 0f);
         Vector3 leftBPos = hitInfoLeft.point + new Vector3(transform.localScale.x / 101f, 0f, 0f);
         Vector3 rightBPos = hitInfoRight.point - new Vector3( transform.localScale.x / 101f, 0f, 0f);
 
@@ -75,16 +87,15 @@ public class CuberAttack : MonoBehaviour
     private void CheckIfPlayerIsInVision()
     {
 
-        Ray ray = new Ray(rayUpOrigin, Vector3.forward);
+        Ray ray = new Ray(rayUpOrigin, Vector3.up);
         Physics.Raycast(ray, out RaycastHit hitInfoUp, 9999f);
+        Debug.DrawRay(ray.origin, ray.direction * 9999f);
 
-        ray = new Ray(rayDownOrigin, Vector3.forward * -1);
+        ray = new Ray(rayDownOrigin, Vector3.up * -1);
         Physics.Raycast(ray, out RaycastHit hitInfoDown, 9999f);
 
         ray = new Ray(rayLeftOrigin, Vector3.right * -1);
         Physics.Raycast(ray, out RaycastHit hitInfoLeft);
-
-        Debug.DrawRay(ray.origin, ray.direction * 9999f);
 
         ray = new Ray(rayRightOrigin, Vector3.right);
         Physics.Raycast(ray, out RaycastHit hitInfoRight, 99f);
