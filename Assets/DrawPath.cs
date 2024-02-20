@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DrawPath : MonoBehaviour
 {
-    List<Transform> points;
+    List<Transform> points = new List<Transform>();
     LineRenderer lr;
     void Start()
     {
@@ -20,11 +20,13 @@ public class DrawPath : MonoBehaviour
             points.Add(transform.GetChild(i).transform);
         }
 
-        lr.positionCount = points.Count;
+        lr.positionCount = points.Count + 1;
 
         for (int i = 0; i < points.Count; i++)
         {
             lr.SetPosition(i, points[i].position);
         }
+
+        lr.SetPosition(points.Count, points[0].position);
     }
 }
