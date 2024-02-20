@@ -9,10 +9,10 @@ using UnityEngine.UIElements;
 public class CuberAttack : MonoBehaviour
 {
     [SerializeField] private bool isMoving;
-    [SerializeField] private Vector3 posB;
-    [SerializeField] private Vector3 posA;
-    
-     private Vector3[] bPositions = new Vector3[4];
+    private Vector3 posB;
+    private Vector3 posA;
+
+    private Vector3[] bPositions = new Vector3[4];
 
     [SerializeField] AnimationCurve curve;
 
@@ -24,42 +24,64 @@ public class CuberAttack : MonoBehaviour
     private Vector3 rayLeftOrigin;
     private Vector3 rayRightOrigin;
 
-    //private Rigidbody rb;
-
+    private Renderer rend;
     // Start is called before the first frame update
     void Start()
     {
-        //rb = GetComponent<Rigidbody>();
+        rend = GetComponent<Renderer>();
 
         posA = transform.position;
 
         AssignBPositions();
 
-        rayUpOrigin = transform.position + new Vector3(0f, transform.localScale.x / 99f, 0f);
-        rayDownOrigin = transform.position - new Vector3(0f, transform.localScale.x / 99f, 0f);
-        rayRightOrigin = transform.position + new Vector3(transform.localScale.x/ 99f, 0f, 0f);
-        rayLeftOrigin = transform.position - new Vector3(transform.localScale.x / 99f, 0f, 0f);
+        rayUpOrigin = transform.position + new Vector3(0f, 3f, 0f);
+        rayDownOrigin = transform.position - new Vector3(0f, 3f, 0f);
+        rayRightOrigin = transform.position + new Vector3(3f, 0f, 0f);    
+        rayLeftOrigin = transform.position - new Vector3(3f, 0f, 0f);
+    }
+
+    void DrawDebugRays()
+    {
+        Ray ray = new Ray(rayUpOrigin, Vector3.up * 9999f);
+        Physics.Raycast(ray, out RaycastHit hitInfoUp, 9999f);
+        Debug.DrawRay(ray.origin, ray.direction * 9999f, Color.white);
+
+        ray = new Ray(rayDownOrigin, Vector3.up * -9999f);
+        Physics.Raycast(ray, out RaycastHit hitInfoDown, 9999f);
+        Debug.DrawRay(ray.origin, ray.direction * 9999f, Color.white);
+
+        ray = new Ray(rayLeftOrigin, Vector3.right * -9999f);
+        Physics.Raycast(ray, out RaycastHit hitInfoLeft);
+        Debug.DrawRay(ray.origin, ray.direction * 9999f, Color.white);
+
+        ray = new Ray(rayRightOrigin, Vector3.right * 9999f);
+        Physics.Raycast(ray, out RaycastHit hitInfoRight, 9999f);
+        Debug.DrawRay(ray.origin, ray.direction * 9999f);
     }
 
     private void AssignBPositions()
     {
-        Ray ray = new Ray(rayUpOrigin, Vector3.up);
+
+        Ray ray = new Ray(rayUpOrigin, Vector3.up * 9999f);
         Physics.Raycast(ray, out RaycastHit hitInfoUp, 9999f);
+        Debug.DrawRay(ray.origin, ray.direction * 9999f, Color.white);
+
+        ray = new Ray(rayDownOrigin, Vector3.up * -9999f);
+        Physics.Raycast(ray, out RaycastHit hitInfoDown, 9999f);
+        Debug.DrawRay(ray.origin, ray.direction * 9999f, Color.white);
+
+        ray = new Ray(rayLeftOrigin, Vector3.right * -9999f);
+        Physics.Raycast(ray, out RaycastHit hitInfoLeft);
+        Debug.DrawRay(ray.origin, ray.direction * 9999f, Color.white);
+
+        ray = new Ray(rayRightOrigin, Vector3.right * 9999f);
+        Physics.Raycast(ray, out RaycastHit hitInfoRight, 9999f);
         Debug.DrawRay(ray.origin, ray.direction * 9999f);
 
-        ray = new Ray(rayDownOrigin, Vector3.up * -1);
-        Physics.Raycast(ray, out RaycastHit hitInfoDown, 9999f);
-
-        ray = new Ray(rayLeftOrigin, Vector3.right * -1);
-        Physics.Raycast(ray, out RaycastHit hitInfoLeft);
-
-        ray = new Ray(rayRightOrigin, Vector3.right);
-        Physics.Raycast(ray, out RaycastHit hitInfoRight, 99f);
-
-        Vector3 upBPos = hitInfoUp.point - new Vector3(0f, transform.localScale.y / 101f, 0f);
-        Vector3 downBPos = hitInfoDown.point + new Vector3(0f, transform.localScale.y / 101f, 0f);
-        Vector3 leftBPos = hitInfoLeft.point + new Vector3(transform.localScale.x / 101f, 0f, 0f);
-        Vector3 rightBPos = hitInfoRight.point - new Vector3( transform.localScale.x / 101f, 0f, 0f);
+        Vector3 upBPos = hitInfoUp.point;//- new Vector3(0f, rend.bounds.size.y / 2f, 0f);
+        Vector3 downBPos = hitInfoDown.point;//+ new Vector3(0f, rend.bounds.size.y / 2f, 0f);
+        Vector3 leftBPos = hitInfoLeft.point;//+ new Vector3(rend.bounds.size.x / 2f, 0f, 0f);
+        Vector3 rightBPos = hitInfoRight.point;//- new Vector3(rend.bounds.size.x / 2f, 0f, 0f);
 
         if (upBPos != null)
             bPositions[0] = upBPos;
@@ -87,41 +109,49 @@ public class CuberAttack : MonoBehaviour
     private void CheckIfPlayerIsInVision()
     {
 
-        Ray ray = new Ray(rayUpOrigin, Vector3.up);
+        Ray ray = new Ray(rayUpOrigin, Vector3.up * 9999f);
         Physics.Raycast(ray, out RaycastHit hitInfoUp, 9999f);
-        Debug.DrawRay(ray.origin, ray.direction * 9999f);
+        //Debug.DrawRay(ray.origin, ray.direction * 9999f, Color.green);
 
-        ray = new Ray(rayDownOrigin, Vector3.up * -1);
+
+        ray = new Ray(rayDownOrigin, Vector3.up * -9999f);
         Physics.Raycast(ray, out RaycastHit hitInfoDown, 9999f);
+        //Debug.DrawRay(ray.origin, ray.direction * 9999f, Color.green);
 
-        ray = new Ray(rayLeftOrigin, Vector3.right * -1);
+        ray = new Ray(rayLeftOrigin, Vector3.right * -9999f);
         Physics.Raycast(ray, out RaycastHit hitInfoLeft);
+        //Debug.DrawRay(ray.origin, ray.direction * 9999f, Color.green);
 
-        ray = new Ray(rayRightOrigin, Vector3.right);
-        Physics.Raycast(ray, out RaycastHit hitInfoRight, 99f);
+        ray = new Ray(rayRightOrigin, Vector3.right * 9999f);
+        Physics.Raycast(ray, out RaycastHit hitInfoRight, 9999f);
+        //Debug.DrawRay(ray.origin, ray.direction * 9999f, Color.green);
 
-        
+
         //Physics.Raycast(transform.position, transform.forward * -1, out RaycastHit hitInfoDown, 9999f, LayerMask.GetMask("Moveable"));
 
-        if (hitInfoUp.collider != null && hitInfoUp.collider.CompareTag("Player"))
+        if (hitInfoUp.collider != null && hitInfoUp.collider.gameObject.CompareTag("Player"))
         {
             posB = bPositions[0];
             isMoving = true;
+            Debug.Log("cuber started moving up");
         }
-        if (hitInfoDown.collider != null && hitInfoDown.collider.CompareTag("Player"))
+        if (hitInfoDown.collider != null && hitInfoDown.collider.gameObject.CompareTag("Player"))
         {
             posB = bPositions[1];
             isMoving = true;
+            Debug.Log("cuber started moving down");
         }
-        if (hitInfoLeft.collider != null && hitInfoLeft.collider.CompareTag("Player"))
+        if (hitInfoLeft.collider != null && hitInfoLeft.collider.gameObject.CompareTag("Player"))
         {
             posB = bPositions[2];
             isMoving = true;
+            Debug.Log("cuber started moving left");
         }
-        if (hitInfoRight.collider != null && hitInfoRight.collider.CompareTag("Player"))
+        if (hitInfoRight.collider != null && hitInfoRight.collider.gameObject.CompareTag("Player"))
         {
             posB = bPositions[3];
             isMoving = true;
+            Debug.Log("cuber started moving right");
         }
 
     }
@@ -131,7 +161,7 @@ public class CuberAttack : MonoBehaviour
         timer += Time.deltaTime;
         transform.position = Vector3.Lerp(posA, posB, curve.Evaluate(timer / durationToAndBack));
 
-        if(timer >= durationToAndBack )
+        if (timer >= durationToAndBack)
         {
             timer = 0f;
             transform.position = posA;
