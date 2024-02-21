@@ -19,7 +19,7 @@ public class Death : MonoBehaviour
         {
             //Instantiate death particle system
             Instantiate(deathPS, transform.position, Quaternion.identity); // scene reloading is handled in the deathPS of the player
-            GetComponent<TrailRenderer>().enabled = false;
+            //GetComponent<TrailRenderer>().enabled = false;
 
             Debug.Log("player died");
 
