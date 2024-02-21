@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 0
   distance:
     m_OverrideState: 1
-    m_Value: 0.25
+    m_Value: 0.317
   cropToFit:
     m_OverrideState: 0
     m_Value: 1
@@ -40,7 +40,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.501
+    m_Value: 0.385
   smoothness:
     m_OverrideState: 0
     m_Value: 0.01
@@ -87,7 +87,7 @@ MonoBehaviour:
     m_Value: 47.3
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.6468396, g: 0.55345905, b: 1, a: 1}
+    m_Value: {r: 0.88324815, g: 0.7529412, b: 1, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
 --- !u!114 &7380020901951983048
 MonoBehaviour:
   m_ObjectHideFlags: 3
