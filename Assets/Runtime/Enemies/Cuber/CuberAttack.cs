@@ -15,7 +15,8 @@ public class CuberAttack : MonoBehaviour
 
     private Vector3[] bPositions = new Vector3[4];
 
-    [SerializeField] AnimationCurve curve;
+    [SerializeField] AnimationCurve curveTo;
+    [SerializeField] AnimationCurve curveBack;
 
     [SerializeField] float timer = 0f;
     [SerializeField] float speed;
@@ -176,7 +177,7 @@ public class CuberAttack : MonoBehaviour
         timer += Time.deltaTime;
         if (shouldMoveTowardsB)
         {
-            transform.position = Vector3.MoveTowards(transform.position, posB, curve.Evaluate(timer) * speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, posB, curveTo.Evaluate(timer) * speed * Time.deltaTime);
 
             float distanceBetweenCubeAndPointB = Vector3.Distance(transform.position, posB);
 
@@ -189,7 +190,7 @@ public class CuberAttack : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, posA, curve.Evaluate(timer) * speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, posA, curveBack.Evaluate(timer) * speed * Time.deltaTime);
 
             float distanceBetweenCubeAndPointA = Vector3.Distance(transform.position, posA);
 

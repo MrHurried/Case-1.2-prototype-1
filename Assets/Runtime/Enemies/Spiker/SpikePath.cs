@@ -63,7 +63,7 @@ public class SpikePath : MonoBehaviour
 
         spikeRb.position = Vector3.Lerp(lastNodePos, nextNodePos, curve.Evaluate((timer / ( distanceBetweenPrevAndNextNode/durationBetweenPoints))));
 
-        spikeRb.MoveRotation(Quaternion.Euler(spikeRb.transform.rotation.eulerAngles.x + spikeRotationSpeed * Time.deltaTime, 90f, 0f));
+        spikeRb.transform.Rotate(spikeRotationSpeed * Time.deltaTime, 0f, 0f);
 
     }
 
