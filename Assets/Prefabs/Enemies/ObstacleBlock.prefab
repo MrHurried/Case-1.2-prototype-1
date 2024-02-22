@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 39155425793435465, guid: 12e2b2eb6560f3a43bff68fec81f7047, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: -7184819803674296287, guid: 6958e9592d9f55248a519232d3a5d8eb, type: 3}
+      objectReference: {fileID: 2100000, guid: 31ac1321b7320e741a974ec111e050fc, type: 2}
     - target: {fileID: 3381655878129928089, guid: 12e2b2eb6560f3a43bff68fec81f7047, type: 3}
       propertyPath: m_Name
       value: ObstacleBlock
