@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class EnlargeButtonTextWhenHoveringOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+
+
     [SerializeField] float scaleMultipler;
 
     public void OnPointerEnter(PointerEventData eventData)
