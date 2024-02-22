@@ -6,20 +6,24 @@ using UnityEngine;
 public class PointCollecting : MonoBehaviour
 {
     private int collectedPoints = 0;
-    private PointText pointTextScript;
+    [SerializeField] private PointText pointTextScript;
     private LoadNextScene nextSceneLoader;
-    private int pointsInCurrentRoom;
+    private int pointsInCurrentRoom = 0;
+
+    private void Awake()
+    {
+        pointTextScript = GameObject.FindWithTag("PointText").GetComponent<PointText>();
+    }
 
     private void Start()
     {
         GameObject[] points = GameObject.FindGameObjectsWithTag("Point");
         pointsInCurrentRoom = points.Length;
-        pointTextScript = GameObject.FindWithTag("PointText").GetComponent<PointText>();
         nextSceneLoader = GameObject.FindWithTag("SceneMngr").GetComponent<LoadNextScene>();
         pointTextScript.Refresh(0, pointsInCurrentRoom);
     }
 
-    public void CollectPoints(int pointamount)
+    public void CollectPoints(int pointamount = 0)
     {
         collectedPoints += pointamount;
         pointTextScript.Refresh(collectedPoints, pointsInCurrentRoom);
