@@ -16,6 +16,6 @@ public class PointText : MonoBehaviour
 
     public void Refresh(int newCollectedPointAmount = 0, int pointsInCurrentRoom = 0)
     {
-        textBox.text = newCollectedPointAmount.ToString() + " / " + pointsInCurrentRoom.ToString() + " points collected";
+        textBox.text = newCollectedPointAmount.ToString() + "/" + pointsInCurrentRoom.ToString() + " points";
     }
 }
