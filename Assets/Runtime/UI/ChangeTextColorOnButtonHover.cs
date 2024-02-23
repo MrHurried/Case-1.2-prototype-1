@@ -13,12 +13,22 @@ public class ChangeTextColorOnButtonHover : MonoBehaviour, IPointerEnterHandler,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        text.colorGradientPreset = hoverGradient;
+        ChangeToHoverColor();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        ChangeToNormalColor();
+    }
+
+    public void ChangeToNormalColor()
+    {
         text.colorGradientPreset = normalGradient;
-     }
+    }
+
+    public void ChangeToHoverColor()
+    {
+        text.colorGradientPreset = hoverGradient;
+    }
 
 }

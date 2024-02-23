@@ -14,6 +14,8 @@ public class QuitGame : MonoBehaviour
 
     public void Go()
     {
+        Physics.gravity = Vector3.zero;
+        Time.timeScale = 1.0f;
         animationScript.PLayShrinkAnimation();
         Invoke("Load", 1.5f); //animation lasts 1.5 seconds
     }

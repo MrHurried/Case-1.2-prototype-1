@@ -24,14 +24,22 @@ public class EnlargeButtonTextWhenHoveringOver : MonoBehaviour, IPointerEnterHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        rectTransform.localScale = hoverScale;
+        EnlargeButton();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        rectTransform.localScale = normalScale;
+        ScaleButtonToNormalSize();
     }
 
-    
+    public void EnlargeButton()
+    {
+        rectTransform.localScale = hoverScale;
+    }
+
+    public void ScaleButtonToNormalSize()
+    {
+        rectTransform.localScale = normalScale;
+    }
 }
 
