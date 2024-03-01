@@ -189,6 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc271ee1855b2434a8eb21cf2d1e92a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointTextScript: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 689f986f49f343e469a9bf323afc1e55, type: 3}
 --- !u!96 &8006639420033192717
 TrailRenderer:
   serializedVersion: 3

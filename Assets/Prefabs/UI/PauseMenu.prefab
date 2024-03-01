@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6637274500673064538}
+      - m_Target: {fileID: 2237618256655156191}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 7807128690070262211}
   - component: {fileID: 8716010945080805790}
   - component: {fileID: 4680360806294225551}
-  - component: {fileID: 6637274500673064538}
+  - component: {fileID: 2237618256655156191}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -691,7 +691,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6637274500673064538
+--- !u!114 &2237618256655156191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -705,6 +705,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseMenuUI: {fileID: 5050302161514788153}
   cursorScript: {fileID: 729910151411286067}
+  buttonSizeScripts:
+  - {fileID: 3945025415917214513}
+  - {fileID: 636988764746357211}
+  - {fileID: 2863883176277317351}
+  buttonColorScripts:
+  - {fileID: 4915044004933686763}
+  - {fileID: 3370812775224686124}
+  - {fileID: 4930496207611778326}
 --- !u!1 &6318986134127882901
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,11 +9,7 @@ public class Death : MonoBehaviour
     [SerializeField] private GameObject deathPS; //death particle system
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            //collect 1 points (sent to player)
-            collision.gameObject.GetComponent<PointCollecting>().CollectPoints(1);
-        }
+       
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -35,5 +31,16 @@ public class Death : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //collect 1 points (sent to player)
+            other.gameObject.GetComponent<PointCollecting>().CollectPoints(1);
+            //Instantiate death particle system
+            Instantiate(deathPS, transform.position, Quaternion.identity);
+            Destroy(transform.parent.gameObject);
+        }
+    }
 
 }
